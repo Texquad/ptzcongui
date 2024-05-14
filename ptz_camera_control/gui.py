@@ -1,7 +1,5 @@
-# ptz_camera_control/gui.py
-
 import tkinter as tk
-from .camera_control import pan_left, pan_right, tilt_up, tilt_down, zoom_in, zoom_out
+from .camera_control import pan_left, pan_right, tilt_up, tilt_down, zoom_in, zoom_out, reset_pan, reset_tilt
 
 def start_gui():
     """
@@ -10,22 +8,34 @@ def start_gui():
     app = tk.Tk()
     app.title("PTZ Camera Control")
 
-    btn_pan_left = tk.Button(app, text="Pan Left", command=pan_left)
-    btn_pan_left.pack(pady=5)
+    # Set a common padding for all buttons
+    button_padding = {'padx': 20, 'pady': 10}
 
-    btn_pan_right = tk.Button(app, text="Pan Right", command=pan_right)
-    btn_pan_right.pack(pady=5)
+    frame = tk.Frame(app, padx=20, pady=20)
+    frame.pack()
 
-    btn_tilt_up = tk.Button(app, text="Tilt Up", command=tilt_up)
-    btn_tilt_up.pack(pady=5)
+    btn_pan_left = tk.Button(frame, text="Pan Left", command=pan_left)
+    btn_pan_left.grid(row=1, column=0, **button_padding)
 
-    btn_tilt_down = tk.Button(app, text="Tilt Down", command=tilt_down)
-    btn_tilt_down.pack(pady=5)
+    btn_pan_right = tk.Button(frame, text="Pan Right", command=pan_right)
+    btn_pan_right.grid(row=1, column=2, **button_padding)
 
-    btn_zoom_in = tk.Button(app, text="Zoom In", command=zoom_in)
-    btn_zoom_in.pack(pady=5)
+    btn_tilt_up = tk.Button(frame, text="Tilt Up", command=tilt_up)
+    btn_tilt_up.grid(row=0, column=1, **button_padding)
 
-    btn_zoom_out = tk.Button(app, text="Zoom Out", command=zoom_out)
-    btn_zoom_out.pack(pady=5)
+    btn_tilt_down = tk.Button(frame, text="Tilt Down", command=tilt_down)
+    btn_tilt_down.grid(row=2, column=1, **button_padding)
+
+    btn_zoom_in = tk.Button(frame, text="Zoom In", command=zoom_in)
+    btn_zoom_in.grid(row=3, column=0, **button_padding)
+
+    btn_zoom_out = tk.Button(frame, text="Zoom Out", command=zoom_out)
+    btn_zoom_out.grid(row=3, column=2, **button_padding)
+
+    btn_reset_pan = tk.Button(frame, text="Reset Pan", command=reset_pan)
+    btn_reset_pan.grid(row=4, column=0, **button_padding)
+
+    btn_reset_tilt = tk.Button(frame, text="Reset Tilt", command=reset_tilt)
+    btn_reset_tilt.grid(row=4, column=2, **button_padding)
 
     app.mainloop()
