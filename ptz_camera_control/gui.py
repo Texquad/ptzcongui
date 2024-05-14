@@ -1,5 +1,5 @@
 import tkinter as tk
-from .camera_control import pan_left, pan_right, tilt_up, tilt_down, zoom_in, zoom_out, reset_pan, reset_tilt
+from camera_control import pan_left, pan_right, tilt_up, tilt_down, zoom_in, zoom_out, reset_pan, reset_tilt
 
 def start_gui():
     """
@@ -39,3 +39,7 @@ def start_gui():
     btn_reset_tilt.grid(row=4, column=2, **button_padding)
 
     app.mainloop()
+
+# Call the GUI function if running this script directly
+if __name__ == "__main__":
+    start_gui()
